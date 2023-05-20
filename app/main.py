@@ -4,7 +4,7 @@ import charts
 def run():
     
     region = input('Enter a region =>')
-    df = pd.read_csv('../data/countries.csv')
+    df = pd.read_csv('./data/countries.csv')
     df = df[df['Continent'] == region]
         
     countries = df['Country'].values
