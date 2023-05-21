@@ -17,8 +17,15 @@ def user_option():
     return chosen_option_user
 
 def run():
-    while True:
-        pass
+    pc = pc_option()
+    user = user_option()
+    
+    if user == pc:
+        print('There is a tie')
+    elif ((user == 'paper' and pc == 'rock') or (user == 'rock' and pc == 'scissors') or (user == 'scissors' and pc == 'paper')):
+        print(f'you win, you got {user}')
+    else:
+        print(f'pc wins, pc got {pc}')
 
 if __name__ == '__main__':
     run()
