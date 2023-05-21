@@ -16,16 +16,65 @@ def user_option():
         print(e)
     return chosen_option_user
 
-def run():
-    pc = pc_option()
-    user = user_option()
+def rules(pc_option, user_option):
     
-    if user == pc:
-        print('There is a tie')
-    elif ((user == 'paper' and pc == 'rock') or (user == 'rock' and pc == 'scissors') or (user == 'scissors' and pc == 'paper')):
-        print(f'you win, you got {user}')
-    else:
-        print(f'pc wins, pc got {pc}')
+    computer_win = 0
+    user_win = 0
+    
+    if user_option == pc_option:
+        print('DRAW!')
+        
+    elif user_option == 'rock':
+        if pc_option == 'scissors':
+            print('user wins!')
+            user_win += 1
+        elif pc_option == 'paper':
+            print('computer wins!')
+            computer_win += 1
+    
+    elif user_option == 'scissors':
+        if pc_option == 'rock':
+            print('computer wins!')
+            computer_win += 1
+        elif pc_option == 'paper':
+            print('user wins!')
+            user_win += 1
+            
+    elif user_option == 'paper':
+        if pc_option == 'scissors':
+            print('computer wins!')
+            computer_win += 1
+        elif pc_option == 'rock':
+            print('user wins!')
+            user_win += 1
 
+    return computer_win, user_win
+    
+
+def run():
+    
+    # print('*'*100)
+    # print('WELCOME TO PAPER, ROCK, SCISSORS')
+    rounds = 0
+    
+    while True:
+
+        
+        pc = pc_option()
+        user = user_option()
+        
+        computer, you = rules(pc, user)
+        rounds += 1
+        print(computer, you)
+        
+        if computer == 2:
+            print('COMPUTER WON!')
+            break
+        elif you == 2:
+            print('YOU WON!')
+            break
+        
+        print('*'*100)
+    
 if __name__ == '__main__':
     run()
